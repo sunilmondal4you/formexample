@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title Fb example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+    <!--jquery-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- bootstrap-->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!--angular-->
+    <script src="bower_components/angular/angular.min.js"></script>
+
+
+    <script src="index.js"></script>
+</head>
+<body ng-controller="myctrl">
+<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">facebook <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Form</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link1</a></li>
+                <li><a href="#">Link2</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 bg-info">some data.</div>
+        <div class="col-md-6 bg-primary" style="padding: 0px;">
+            <form class="form-horizontal" style="padding: 40px;">
+                <div class="form-group">
+                    <label for="name"class="col-sm-2 control-label">Fullname:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" placeholder="name" ng-model="user.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email Id:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="email" ng-model="user.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mobile" class="col-sm-2 control-label">Mobile no:</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="mobile" placeholder="mobile no" ng-model="user.mobile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edu" class="col-sm-2 control-label">Qualification:</label>
+                    <div class="col-sm-10">
+                        <select class="col-sm-12 form-control" ng-model="user.x" id="edu" ng-options="x for x in education"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default" ng-if="editg" ng-click="updatme($index);">Update </button>
+                        <button type="submit" class="btn btn-default" ng-if="!editg" ng-click="savme();">Save </button>
+                    </div>
+                </div>
+            </form>
+            <div class="jumbotron"style="color: black";>
+                <table class="table">
+                    <tr>
+                        <th>Sl no</th>
+                        <th>Name</th>
+                        <th>Email Id</th>
+                        <th>Mobile no</th>
+                        <th>Eduction</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr ng-repeat="val in userbook">
+                        <td>{{$index}}</td>
+                        <td>{{val.name}}</td>
+                        <td>{{val.email}}</td>
+                        <td>{{val.mobile}}</td>
+                        <td>{{val.x}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm" ng-click="edtme($index);">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm" ng-click="deleteme($index);">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+        <div class="col-md-3 bg-warning">.col-md-4</div>
+    </div>
+
+</div>
+
+</body>
+</html>
